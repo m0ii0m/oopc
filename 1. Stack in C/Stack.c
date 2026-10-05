@@ -57,8 +57,7 @@ void show(const Stack* s)
 {
 	printf("[ ");
 	if (isEmpty(s)) {
-		printf("empty ");
-		printf("]\n");
+		printf("empty ]\n");
 		return;
 	}
 	for (int i = s->size - 1; i >= 0; i--) {
