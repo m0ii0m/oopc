@@ -10,7 +10,7 @@ $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 run: $(TARGET)
-	valgrind ./$(TARGET)
+	clear && valgrind ./$(TARGET)
 
 clean:
 	rm -f $(TARGET) $(OBJS)
