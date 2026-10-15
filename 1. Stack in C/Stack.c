@@ -6,8 +6,10 @@ void init(Stack* s)
 {
 	s->max_size = INITAL_SATCK_SIZE;
 	s->values = (int*)malloc(sizeof(int) * s->max_size);
-	if (s->values == NULL)
-		return;
+	if (s->values == NULL) {
+		fprintf(stderr, "init(): malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 	for (int i = 0; i < s->max_size; i++) {
 		s->values[i] = 0;
 	}
@@ -25,8 +27,10 @@ void push(Stack* s, int element)
 	if (s->size == s->max_size) {
 		int* tmp;
 		tmp = (int*)realloc(s->values, sizeof(int) * (s->max_size) * 2);
-		if (tmp == NULL)
-			return;
+		if (tmp == NULL) {
+			fprintf(stderr, "push(): realloc failed\n");
+			exit(EXIT_FAILURE);
+		}
 		s->values = tmp;
 		(s->max_size) *= 2;
 	}
