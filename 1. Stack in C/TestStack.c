@@ -52,8 +52,8 @@ void testMultipleStacksAreIndependent()
 		push(&b, i);
 	}
 	assert(b.max_size == 32);
-	assert(a.max_size == INITAL_SATCK_SIZE);
-	assert(c.max_size == INITAL_SATCK_SIZE);
+	assert(a.max_size == INITIAL_STACK_SIZE);
+	assert(c.max_size == INITIAL_STACK_SIZE);
 
 	push(&c, -7);
 	push(&c, 42);

@@ -1,7 +1,7 @@
 #ifndef STACK_H
 #define STACK_H
 
-#define INITAL_SATCK_SIZE 16
+#define INITIAL_STACK_SIZE 16
 
 #include <stdbool.h>
 

@@ -4,7 +4,7 @@
 
 void init(Stack* s)
 {
-	s->max_size = INITAL_SATCK_SIZE;
+	s->max_size = INITIAL_STACK_SIZE;
 	s->values = (int*)malloc(sizeof(int) * s->max_size);
 	if (s->values == NULL) {
 		fprintf(stderr, "init(): malloc failed\n");
