@@ -6,7 +6,10 @@ class Stack {
 	static const int INITIAL_STACK_SIZE = 16;
 
 	Stack();
+	Stack(const Stack& other);
 	~Stack();
+
+	Stack& operator=(const Stack& other);
 
 	void push(int element);
 	int pop();

@@ -10,7 +10,7 @@ $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 run: $(TARGET)
-	clear && valgrind ./$(TARGET)
+	clear && valgrind --leak-check=full ./$(TARGET)
 
 clean:
 	rm -f $(TARGET) $(OBJS)
