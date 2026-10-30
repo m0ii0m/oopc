@@ -19,6 +19,11 @@ std::string toString(const Complex& c)
 	return os.str();
 }
 
+void assertStringEquals(Complex c, std::string s)
+{
+	assert(toString(c) == s);
+}
+
 void testConstructionAndFieldAccess()
 {
 	std::cout << "=== testConstructionAndFieldAccess ===" << std::endl;
@@ -50,10 +55,11 @@ void testConstructionAndFieldAccess()
 void testStreamInsertion()
 {
 	std::cout << "=== testStreamInsertion ===" << std::endl;
-	assert(toString(Complex(3.0, 4.0)) == "3 + 4i");
-	assert(toString(Complex(3.0, -4.0)) == "3 - 4i");
-	assert(toString(Complex(-1.5, 0.0)) == "-1.5 + 0i");
-	assert(toString(Complex()) == "0 + 0i");
+
+	assertStringEquals(Complex(3.0, 4.0), "3 + 4i");
+	assertStringEquals(Complex(3.0, -4.0), "3 - 4i");
+	assertStringEquals(Complex(-1.5, 0.0), "-1.5 + 0i");
+	assertStringEquals(Complex(), "0 + 0i");
 
 	const Complex c(2.0, -0.5);
 	std::cout << "chained: " << c << " and " << Complex(1, 1) << std::endl;
