@@ -19,7 +19,6 @@ void init(Stack* s)
 void destroy(Stack* s)
 {
 	free(s->values);
-	s->values = NULL;
 }
 
 void push(Stack* s, int element)
