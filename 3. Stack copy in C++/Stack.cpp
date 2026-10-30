@@ -36,9 +36,6 @@ Stack& Stack::operator=(const Stack& other)
 	for (int i = 0; i < other.size; i++) {
 		values[i] = other.values[i];
 	}
-	for (int i = other.size; i < size; i++) {
-		values[i] = 0;
-	}
 	size = other.size;
 	return *this;
 }
