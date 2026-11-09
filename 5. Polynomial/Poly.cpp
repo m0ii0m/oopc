@@ -3,13 +3,29 @@
 
 using namespace std;
 
+static const double EPSILON = 1e-12;
+
+static bool isZero(double d)
+{
+	return fabs(d) < EPSILON;
+}
+
 Poly::Poly() {}
 
 Poly::Poly(double d) : coef{d} {}
 
 size_t Poly::getSize() const
 {
-	return coef.size();
+	size_t n = coef.size();
+	while (n > 0 && isZero(coef[n - 1]))
+		n--;
+	return n;
+}
+
+void Poly::trim()
+{
+	while (!coef.empty() && isZero(coef.back()))
+		coef.pop_back();
 }
 
 double& Poly::operator[](size_t i)
@@ -38,7 +54,7 @@ ostream& operator<<(ostream& os, const Poly& p)
 	bool first = true;
 	for (size_t i = p.getSize(); i-- > 0;) {
 		double c = p[i];
-		if (c == 0.0)
+		if (isZero(c))
 			continue;
 
 		if (first)
@@ -67,6 +83,7 @@ Poly operator+(const Poly& p1, const Poly& p2)
 	for (size_t i = 0; i < max(p1.getSize(), p2.getSize()); i++) {
 		res[i] = p1[i] + p2[i];
 	}
+	res.trim();
 	return res;
 }
 
@@ -76,6 +93,7 @@ Poly operator-(const Poly& p1, const Poly& p2)
 	for (size_t i = 0; i < max(p1.getSize(), p2.getSize()); i++) {
 		res[i] = p1[i] - p2[i];
 	}
+	res.trim();
 	return res;
 }
 
@@ -85,5 +103,6 @@ Poly operator*(const Poly& p1, const Poly& p2)
 	for (size_t i = 0; i < p1.getSize(); i++)
 		for (size_t j = 0; j < p2.getSize(); j++)
 			res[i + j] += p1[i] * p2[j];
+	res.trim();
 	return res;
 }
