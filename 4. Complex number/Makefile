@@ -13,6 +13,6 @@ run: $(TARGET)
 	clear && valgrind --leak-check=full ./$(TARGET)
 
 clean:
-	rm -f $(TARGET) $(OBJS)
+	rm -f $(TARGET) $(OBJS) vgcore.*
 
 .PHONY: run clean
