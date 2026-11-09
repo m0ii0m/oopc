@@ -1,7 +1,7 @@
 CC = g++
 CFLAGS = -g -Wall -pedantic
 TARGET = myprogram.out
-OBJS = TestPoly.o Poly.o
+OBJS = TestPolyWithFunctionTemplate.o Poly.o
 
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
@@ -13,6 +13,6 @@ run: $(TARGET)
 	clear && valgrind --leak-check=full ./$(TARGET)
 
 clean:
-	rm -f $(TARGET) $(OBJS) vgcore.*
+	rm -f $(TARGET) *.o vgcore.*
 
 .PHONY: run clean
